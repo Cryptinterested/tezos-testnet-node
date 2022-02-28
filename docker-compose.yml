@@ -2,10 +2,10 @@ version: "3.4"
 volumes:
   node_data:
     name: ithacanet-node
-    external: true   
+    external: false  
   client_data:
     name: ithacanet-client
-    external: true
+    external: false
 services:
   full-node:
     image: tezos/tezos:v12.0
