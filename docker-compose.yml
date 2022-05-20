@@ -1,24 +1,19 @@
 version: "3.4"
 volumes:
-  node_data:
-    name: mainnet-node
+  node_data_full:
+    name: mainnet-node-full
+    external: false  
+  node_data_rolling:
+    name: mainnet-node-rolling
     external: false  
   client_data:
     name: mainnet-client
     external: false
 services:
-  import:
+  node_full:
+    container_name: tezos-public-node-full
     image: tezos/tezos:latest
-    container_name: tezos-snapshot-import
-    command: tezos-snapshot-import
-    volumes:
-      - node_data:/var/run/tezos/node
-      - client_data:/var/run/tezos/client
-      - "/home/danub0/snapshot.rolling:/snapshot"
-  node:
-    container_name: tezos-public-node
-    image: tezos/tezos:latest
-    command: tezos-node --net-addr :9732 --rpc-addr 127.0.0.1:8732 --rpc-addr 0.0.0.0:8732 --allow-all-rpc 0.0.0.0:8732 
+    command: tezos-node --net-addr :9732 --rpc-addr 127.0.0.1:8732 --rpc-addr 0.0.0.0:8732 --allow-all-rpc 0.0.0.0:8732 --history-mode=full
     ports:
     - '9732:9732'
     - '8732:8732'
@@ -27,7 +22,24 @@ services:
     - "9732" 
     privileged: true
     volumes:
-     - node_data:/var/run/tezos/node
+     - node_data_full:/var/run/tezos/node
+     - client_data:/var/run/tezos/client
+     - /dev/bus/usb:/dev/bus/usb
+    restart: on-failure
+    network_mode: "host"
+  node_rolling:
+    container_name: tezos-public-node-rolling
+    image: tezos/tezos:latest
+    command: tezos-node --net-addr :9732 --rpc-addr 127.0.0.1:8732 --rpc-addr 0.0.0.0:8732 --allow-all-rpc 0.0.0.0:8732 --history-mode=rolling
+    ports:
+    - '9733:9733'
+    - '8733:8733'
+    expose:
+    - "8733"
+    - "9733" 
+    privileged: true
+    volumes:
+     - node_data_rolling:/var/run/tezos/node
      - client_data:/var/run/tezos/client
      - /dev/bus/usb:/dev/bus/usb
     restart: on-failure
@@ -42,7 +54,7 @@ services:
      - PROTOCOL=012-Psithaca
     command: tezos-baker
     volumes:
-     - node_data:/var/run/tezos/node:ro
+     - node_data_full:/var/run/tezos/node:ro
      - client_data:/var/run/tezos/client
     restart: on-failure
     network_mode: "host"
