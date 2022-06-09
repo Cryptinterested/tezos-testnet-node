@@ -13,7 +13,7 @@ services:
   node_full:
     container_name: tezos-public-node-full
     image: tezos/tezos:latest
-    command: tezos-node --net-addr :9732 --rpc-addr 127.0.0.1:8732 --rpc-addr 0.0.0.0:8732 --allow-all-rpc 0.0.0.0:8732 --history-mode=full --network=ithacanet
+    command: tezos-node --net-addr :9732 --rpc-addr 127.0.0.1:8732 --rpc-addr 0.0.0.0:8732 --allow-all-rpc 0.0.0.0:8732 --history-mode=full --network=jakartanet
     ports:
     - '9732:9732'
     - '8732:8732'
@@ -30,7 +30,7 @@ services:
   node_rolling:
     container_name: tezos-public-node-rolling
     image: tezos/tezos:latest
-    command: tezos-node --net-addr :9732 --rpc-addr 127.0.0.1:8732 --rpc-addr 0.0.0.0:8732 --allow-all-rpc 0.0.0.0:8732 --history-mode=rolling --network=ithacanet
+    command: tezos-node --net-addr :9732 --rpc-addr 127.0.0.1:8732 --rpc-addr 0.0.0.0:8732 --allow-all-rpc 0.0.0.0:8732 --history-mode=rolling --network=jakartanet
     ports:
     - '9733:9733'
     - '8733:8733'
@@ -51,7 +51,7 @@ services:
      - HOME=/tmp
      - NODE_HOST=127.0.0.1
      - NODE_RPC_PORT=8732
-     - PROTOCOL=012-Psithaca
+     - PROTOCOL=013-PtJakart
     command: tezos-baker
     volumes:
      - node_data_full:/var/run/tezos/node:ro
