@@ -51,7 +51,7 @@ services:
      - HOME=/tmp
      - NODE_HOST=127.0.0.1
      - NODE_RPC_PORT=8732
-     - PROTOCOL=013-PtJakart
+     - PROTOCOL=012-Psithaca
     command: tezos-baker
     volumes:
      - node_data_full:/var/run/tezos/node:ro
