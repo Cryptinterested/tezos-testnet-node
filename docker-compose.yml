@@ -45,7 +45,7 @@ services:
     restart: on-failure
     network_mode: "host"
   baker:
-    container_name: tezos-baker
+    container_name: tezos-baker --liquidity-baking-toggle-vote pass
     image: tezos/tezos:v13.0
     environment:
      - HOME=/tmp
