@@ -21,11 +21,11 @@ docker_list_ledger_addresses:
 	sudo docker exec tezos-public-node sudo tezos-client --endpoint http://127.0.0.1:8732 list known addresses
 	
 docker_get_balance:
-       sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 get balance for baker
+        sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 get balance for baker
 
 docker_ledger_bake:
-       sudo docker exec tezos-public-node-full sudo tezos-client --endpoint http://127.0.0.1:8732 setup ledger to bake for baker
+        sudo docker exec tezos-public-node-full sudo tezos-client --endpoint http://127.0.0.1:8732 setup ledger to bake for baker
 
 docker_chain_head:
-       sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 rpc get /chains/main/blocks/head/header
+        sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 rpc get /chains/main/blocks/head/header
 
