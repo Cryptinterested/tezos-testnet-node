@@ -45,14 +45,14 @@ services:
     restart: on-failure
     network_mode: "host"
   baker:
-    container_name: tezos-baker --liquidity-baking-toggle-vote pass
+    container_name: tezos-baker
     image: tezos/tezos:v13.0
     environment:
      - HOME=/tmp
      - NODE_HOST=127.0.0.1
      - NODE_RPC_PORT=8732
      - PROTOCOL=013-PtJakart
-    command: tezos-baker
+    command: tezos-baker --liquidity-baking-toggle-vote pass
     volumes:
      - node_data_full:/var/run/tezos/node:ro
      - client_data:/var/run/tezos/client
