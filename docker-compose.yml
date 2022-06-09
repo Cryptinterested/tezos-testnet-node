@@ -30,7 +30,7 @@ services:
   node_rolling:
     container_name: tezos-public-node-rolling
     image: tezos/tezos:v13.0
-    command: tezos-node --net-addr :9732 --rpc-addr 127.0.0.1:8732 --rpc-addr 0.0.0.0:8732 --allow-all-rpc 0.0.0.0:8732 --history-mode=rolling --network=jakartanet
+    command: tezos-node --net-addr :9733 --rpc-addr 127.0.0.1:8733 --rpc-addr 0.0.0.0:8733 --allow-all-rpc 0.0.0.0:8733 --history-mode=rolling --network=jakartanet
     ports:
     - '9733:9733'
     - '8733:8733'
