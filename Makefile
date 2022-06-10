@@ -9,7 +9,7 @@ docker_stop:
 	sudo docker-compose stop baker
 	
 docker_create_key:
-	eval $(sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 gen keys baker)
+	sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 gen keys baker
 	
 docker_register_key_delegate:
 	eval $(sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 register key baker as delegate)
