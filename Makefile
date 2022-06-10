@@ -12,20 +12,20 @@ docker_create_key:
 	sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 gen keys baker
 	
 docker_register_key_delegate:
-	eval $(sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 register key baker as delegate)
+	sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 register key baker as delegate
 
 docker_list_addresses:
-	eval $(sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 list known addresses)
+	sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 list known addresses
 	
 docker_list_ledger_addresses:
-	eval $(sudo docker exec tezos-public-node-full sudo tezos-client --endpoint http://127.0.0.1:8732 list known addresses)
+	sudo docker exec tezos-public-node-full sudo tezos-client --endpoint http://127.0.0.1:8732 list known addresses
 	
 docker_get_balance:
-	eval $(sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 get balance for baker)
+	sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 get balance for baker
 
 docker_ledger_bake:
-	eval $(sudo docker exec tezos-public-node-full sudo tezos-client --endpoint http://127.0.0.1:8732 setup ledger to bake for baker)
+	sudo docker exec tezos-public-node-full sudo tezos-client --endpoint http://127.0.0.1:8732 setup ledger to bake for baker
 
 docker_chain_head:
-	eval $(sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 rpc get /chains/main/blocks/head/header)
+	sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 rpc get /chains/main/blocks/head/header
 
