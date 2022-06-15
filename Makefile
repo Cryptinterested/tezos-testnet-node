@@ -29,3 +29,5 @@ docker_ledger_bake:
 docker_chain_head:
 	sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 rpc get /chains/main/blocks/head/header
 
+docker-pull:
+	git pull
