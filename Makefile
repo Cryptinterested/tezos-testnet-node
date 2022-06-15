@@ -31,3 +31,5 @@ docker_chain_head:
 
 docker-pull:
 	git pull
+docker-bootstrapped:
+	sudo docker exec tezos-public-node-full tezos-client --endpoint http://127.0.0.1:8732 bootstrapped
